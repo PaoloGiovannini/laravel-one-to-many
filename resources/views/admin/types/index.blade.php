@@ -23,6 +23,7 @@
                         <td>{{ count($type->projects) }}</td>
                         <td>
                             <a class="btn rounded-pill btn-primary me-2" href="{{route('admin.types.show', $type->slug)}}">VEDI</a>
+                            <a href="{{route('admin.types.edit', $type->slug)}}" class="btn rounded-pill btn-warning me-2">MODIFICA</a>
                         </td>
                     </tr>
                 @endforeach
