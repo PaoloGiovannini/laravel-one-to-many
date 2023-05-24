@@ -21,9 +21,14 @@
                         <td>{{ $type->name }}</td>
                         <td>{{ $type->slug }}</td>
                         <td>{{ count($type->projects) }}</td>
-                        <td>
+                        <td class="d-flex align-items-center">
                             <a class="btn rounded-pill btn-primary me-2" href="{{route('admin.types.show', $type->slug)}}">VEDI</a>
                             <a href="{{route('admin.types.edit', $type->slug)}}" class="btn rounded-pill btn-warning me-2">MODIFICA</a>
+                            <form action="{{route('admin.types.destroy', ['type' => $type->slug])}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn rounded-pill btn-danger">ELIMINA</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
