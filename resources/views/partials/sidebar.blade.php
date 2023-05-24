@@ -19,6 +19,12 @@
                     <span class="ms-1 d-none d-sm-inline">Crea nuovo progetto</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('admin.types.index')}}" class="nav-link align-middle px-0">
+                    <i class="bi bi-eye"></i>
+                    <span class="ms-1 d-none d-sm-inline">Visualizza tipologie</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
