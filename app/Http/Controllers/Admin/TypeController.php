@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTypeRequest;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -36,9 +37,17 @@ class TypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTypeRequest $request)
     {
-        //
+        $form_info = $request->validated();
+
+        $form_info['slug'] = Type::generateSlug($request->name);
+
+        $newType = new Type();
+
+        $newType = Type::create($form_info);
+
+        return redirect()->route('admin.types.show', ['type' => $newType->slug]);
     }
 
     /**
